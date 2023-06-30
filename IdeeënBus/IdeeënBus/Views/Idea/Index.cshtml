@@ -1,0 +1,74 @@
+﻿@model IEnumerable<LOGIC.Idea>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Onderwerp)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Beschrijving)
+            </th>
+            <th>
+                Idee van
+            </th>
+            <th>
+                Type
+            </th>
+            <th>
+                Begindatum
+            </th>
+            <th>
+                Einddatum
+            </th>
+            <th>
+                Categories
+            </th>
+            <th>
+                Aanmaakdatum
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Onderwerp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Beschrijving)
+                </td>
+                <td>
+                    @if (item.UserName != null)
+                    {
+                        @Html.DisplayFor(modelItem => item.UserName)
+
+                    } @if (item.Koper_id == null)
+                    {
+                        <p>Anoniem</p>
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BeginDatum)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EindDatum)
+                </td>
+                <td>
+                    @foreach (var categorie in item.Categories)
+                    {
+                        @Html.DisplayFor(modelItem => categorie)
+                    }
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AanmaakDatum)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
